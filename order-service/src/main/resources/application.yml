@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: order-service
+
+# Day 2 Challenge 2 — everything Order Service needs to reach User Service
+# lives here, not in Java source. Bound to UserServiceProperties.
+# Override any of these without touching code, e.g.:
+#   mvn spring-boot:run -Dspring-boot.run.arguments=--user-service.base-url=http://localhost:9091
+# or with an environment variable: USER_SERVICE_BASEURL=http://localhost:9091
+user-service:
+  base-url: http://localhost:8081
+  connect-timeout-ms: 3000
+  read-timeout-ms: 3000
