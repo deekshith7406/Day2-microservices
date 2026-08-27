@@ -1,31 +1,3 @@
-# One Enterprise Platform — Day 1 & Day 2 Exercises
-
-Two independent Spring Boot services that demonstrate synchronous
-service-to-service REST communication. Built for the Day 1 handbook
-(get them talking) and refined for the Day 2 handbook (make the APIs
-intentional, the failures deliberate, and the configuration external).
-
-```
-one-enterprise-platform/
-├── API-CONTRACTS.md   → full request/response contract for both services
-├── user-service/       → owns user data, port 8081
-└── order-service/       → owns order data, calls user-service, port 8082
-```
-
-No database, no Docker, no Spring Cloud — just two plain Spring Boot
-apps talking over HTTP, as both handbooks specify.
-
-## Prerequisites
-
-- Java 17+
-- Maven 3.8+ (or use each project's own `mvnw` if you add one)
-
-## Running the services
-
-Each service is fully independent — start them in separate terminals,
-in any order (though starting User Service first avoids the first
-downstream error).
-
 **Terminal 1 — User Service (port 8081)**
 ```bash
 cd user-service
