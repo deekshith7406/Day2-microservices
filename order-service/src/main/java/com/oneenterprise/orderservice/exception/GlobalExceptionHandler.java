@@ -9,22 +9,20 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // 404 — the order itself doesn't exist
     @ExceptionHandler(OrderNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleOrderNotFound(OrderNotFoundException ex) {
         ErrorResponse body = new ErrorResponse("ORDER_NOT_FOUND", ex.getMessage(), HttpStatus.NOT_FOUND.value());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
     }
 
-    // 404 — the order exists, but the user it references doesn't exist in User Service
+
     @ExceptionHandler(RelatedUserNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleRelatedUserNotFound(RelatedUserNotFoundException ex) {
         ErrorResponse body = new ErrorResponse("RELATED_USER_NOT_FOUND", ex.getMessage(), HttpStatus.NOT_FOUND.value());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
     }
 
-    // 503 — User Service could not be reached at all (down, timed out, etc.)
-    // This is the case the handbook wants you to *see* by stopping User Service.
+
     @ExceptionHandler(UserServiceUnavailableException.class)
     public ResponseEntity<ErrorResponse> handleUserServiceUnavailable(UserServiceUnavailableException ex) {
         ErrorResponse body = new ErrorResponse(
