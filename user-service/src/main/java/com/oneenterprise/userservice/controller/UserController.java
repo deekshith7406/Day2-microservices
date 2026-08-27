@@ -8,18 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * API CONTRACT
- * ------------
- * GET /api/users/{id}
- *   200 OK              → body: {@link UserResponse}
- *   404 Not Found        → body: {@link com.oneenterprise.userservice.exception.ErrorResponse},
- *                           error = "USER_NOT_FOUND"
- *   400 Bad Request       → body: ErrorResponse, error = "INVALID_REQUEST" (e.g. id is not a number)
- *
- * Consumers should be able to rely on this behavior without reading
- * UserService or the User entity.
- */
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
