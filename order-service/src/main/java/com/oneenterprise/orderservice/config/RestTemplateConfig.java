@@ -14,10 +14,7 @@ public class RestTemplateConfig {
 
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder, UserServiceProperties properties) {
-        // Timeouts are configured values, not magic numbers — see
-        // application.yml (user-service.connect-timeout-ms / read-timeout-ms).
-        // A network call to User Service should never hang forever if
-        // User Service is slow or unreachable.
+      
         return builder
                 .connectTimeout(Duration.ofMillis(properties.getConnectTimeoutMs()))
                 .readTimeout(Duration.ofMillis(properties.getReadTimeoutMs()))
